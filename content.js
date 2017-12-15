@@ -1,18 +1,5 @@
 // content.js
 var input = document.getElementById("lst-ib");
-var css = 'span::selection{background: none;}',
-    head = document.head || document.getElementsByTagName('head')[0],
-    style = document.createElement('style');
-
-style.type = 'text/css';
-if (style.styleSheet){
-  style.styleSheet.cssText = css;
-} else {
-  style.appendChild(document.createTextNode(css));
-}
-
-head.appendChild(style);
-console.log(css);
 input.oninput = function(){
   "use strict";
   var div = document.createElement("DIV");
