@@ -12,7 +12,6 @@ input.oninput = function(){
 	div.style.position = "fixed";
 	div.style.top = Math.random() * 100 + "%";
 	div.style.left = Math.random() * 100 + "%";
-	div.style.transform = "translate(-50%, -50%) rotate(" + Math.random() * 360 + "deg)";
 	div.style.zIndex = "1";
 	document.body.appendChild(div);
 }
