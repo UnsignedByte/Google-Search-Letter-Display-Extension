@@ -4,7 +4,7 @@ input.oninput = function(){
   input.value
   "use strict";
   var div = document.createElement("DIV");
-  div.style.backgroundImage = "url(https://raw.githubusercontent.com/UnsignedByte/NewTab-Chrome-Extension/master/letters/"+input.value.charCodeAt(input.value.length-1)+")";
+  div.style.backgroundImage = "url(https://raw.githubusercontent.com/UnsignedByte/NewTab-Chrome-Extension/master/letters/"+input.value.charCodeAt(input.value.length-1)+".png)";
   div.style.width = "100px";
 	div.style.height = "200px";
 	div.style.backgroundSize = "contain";
