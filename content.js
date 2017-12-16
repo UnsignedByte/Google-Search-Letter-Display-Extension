@@ -1,5 +1,11 @@
 // content.js
-var input = document.getElementById("lst-ib");
+if ( window.location.hostname == "www.google.com" ){
+  var input = document.getElementById("lst-ib");
+}else if(window.location.hostname == "stackoverflow.com"){
+  var input = document.getElementsByClassName("f-input js-search-field")[0];
+}else{
+  var input = null;
+}
 var randDeg = Math.random()*2*Math.PI;
 var isDel = false;
 var oldX = [],oldY = [];
@@ -14,37 +20,45 @@ var img = {
 }
 var sizemult = Math.sqrt(Math.pow(img.width,2)+Math.pow(img.height,2));
 
+for(var i = 0; i<input.value.length; i++){
+  addText(i);
+}
+
 input.oninput = function(){
   if(!isDel){
-    var div = document.createElement("DIV");
-    div.style.backgroundImage = "url(https://raw.githubusercontent.com/UnsignedByte/NewTab-Chrome-Extension/master/letters/"+input.value.charCodeAt(input.value.length-1)+".png)";
-    div.className = "LETTER_____ClASS";
-    div.style.width = img.width+"px";
-  	div.style.height = img.height+"px";
-  	div.style.backgroundSize = "contain";
-  	div.style.backgroundRepeat = "no-repeat";
-  	div.style.position = "fixed";
-  	div.style.top = oldY[oldY.length-1] + "%";
-  	div.style.left = oldX[oldX.length-1] + "%";
-    div.style.transform = "translate(-50%, -50%) rotate(" + randDeg/Math.PI/2*360 + "deg)";
-  	div.style.zIndex = "1";
-  	document.body.appendChild(div);
-    randDeg+=(Math.random()-0.5)*Math.PI/4;
-    var newX = oldX[oldX.length-1]+100*sizemult*Math.cos(randDeg)/size.width;
-    var newY = oldY[oldY.length-1]+100*sizemult*Math.sin(randDeg)/size.height;
-    if ( newX>95 ){
-      newX -= 90;
-    }else if(newX<5) {
-      newX = 90-newX;
-    }
-    if ( newY>95 ){
-      newY -= 90;
-    }else if(newY<5) {
-      newY = 90-newY;
-    }
-    oldX.push(newX);
-    oldY.push(newY);
+    addText(input.value.length-1);
   }
+}
+
+function addText(id){
+  var div = document.createElement("DIV");
+  div.style.backgroundImage = "url(https://raw.githubusercontent.com/UnsignedByte/NewTab-Chrome-Extension/master/letters/"+input.value.charCodeAt(id)+".png)";
+  div.className = "LETTER_____ClASS";
+  div.style.width = img.width+"px";
+  div.style.height = img.height+"px";
+  div.style.backgroundSize = "contain";
+  div.style.backgroundRepeat = "no-repeat";
+  div.style.position = "fixed";
+  div.style.top = oldY[oldY.length-1] + "%";
+  div.style.left = oldX[oldX.length-1] + "%";
+  div.style.transform = "translate(-50%, -50%) rotate(" + randDeg/Math.PI/2*360 + "deg)";
+  div.style.zIndex = "1";
+  document.body.appendChild(div);
+  randDeg+=(Math.random()-0.5)*Math.PI/4;
+  var newX = oldX[oldX.length-1]+100*sizemult*Math.cos(randDeg)/size.width;
+  var newY = oldY[oldY.length-1]+100*sizemult*Math.sin(randDeg)/size.height;
+  if ( newX>95 ){
+    newX -= 90;
+  }else if(newX<5) {
+    newX = 90-newX;
+  }
+  if ( newY>95 ){
+    newY -= 90;
+  }else if(newY<5) {
+    newY = 90-newY;
+  }
+  oldX.push(newX);
+  oldY.push(newY);
 }
 
 input.onkeydown = function(evt) {
