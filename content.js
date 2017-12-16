@@ -10,7 +10,7 @@ var size = {
   height: window.innerHeight || document.body.clientHeight
 }
 var img = {
-  width: 30, height: 55
+  width: 30/2, height: 55/2
 }
 var sizemult = Math.sqrt(Math.pow(img.width,2)+Math.pow(img.height,2));
 
@@ -24,11 +24,12 @@ input.oninput = function(){
   	div.style.backgroundSize = "contain";
   	div.style.backgroundRepeat = "no-repeat";
   	div.style.position = "fixed";
-  	div.style.top = (oldY[oldY.length-1]-100*img.width/size.width) + "%";
-  	div.style.left = (oldX[oldX.length-1]-100*img.height/size.width) + "%";
+  	div.style.top = oldY[oldY.length-1] + "%";
+  	div.style.left = oldX[oldX.length-1] + "%";
+    div.style.transform = "translate(-50%, -50%) rotate(" + randDeg/Math.PI/2*360 + "deg)";
   	div.style.zIndex = "1";
   	document.body.appendChild(div);
-    randDeg+=(Math.random()-0.5)*Math.PI/2;
+    randDeg+=(Math.random()-0.5)*Math.PI/4;
     var newX = oldX[oldX.length-1]+100*sizemult*Math.cos(randDeg)/size.width;
     var newY = oldY[oldY.length-1]+100*sizemult*Math.sin(randDeg)/size.height;
     if ( newX>95 ){
