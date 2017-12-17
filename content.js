@@ -6,8 +6,10 @@ try{
 }
 if ( window.location.hostname == "www.google.com" && !isImg){
   var input = document.getElementById("lst-ib");
-}else if(window.location.hostname == "stackoverflow.com"){
+}else if( window.location.hostname == "stackoverflow.com" ){
   var input = document.getElementsByClassName("f-input js-search-field")[0];
+}else if( window.location.hostname == "github.com" ){
+  var input = document.getElementsByClassName("form-control header-search-input js-site-search-focus js-site-search-field is-clearable")[0] || document.getElementsByClassName("form-control header-search-input js-site-search-focus  ")[0];
 }else{
   var input = null;
 }
@@ -26,9 +28,7 @@ var img = {
 }
 var sizemult = Math.sqrt(Math.pow(img.width,2)+Math.pow(img.height,2));
 
-for(var i = 0; i<input.value.length; i++){
-  addText(i);
-}
+addText();
 
 input.oninput = function(){
   var toDelete = document.getElementsByClassName("LETTER_____ClASS");
@@ -44,7 +44,7 @@ function isASCII(i) {
 
 function addText(){
   while(input.value.length>=oldX.length){
-    var randDeg = oldDeg[indice]+(Math.random()-0.5)*Math.PI/4;
+    var randDeg = oldDeg[indice]+(Math.random()-0.5)*Math.PI/3;
     var newX = oldX[oldX.length-1]+100*sizemult*Math.cos(randDeg)/size.width;
     var newY = oldY[oldY.length-1]+100*sizemult*Math.sin(randDeg)/size.height;
     if ( newX>95 ){
