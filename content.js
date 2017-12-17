@@ -43,8 +43,8 @@ function isASCII(i) {
 }
 
 function addText(){
-  while(input.value.length>=oldX.length){
-    var randDeg = oldDeg[indice]+(Math.random()-0.5)*Math.PI/3;
+  while(input.value.length+1>=oldX.length){
+    var randDeg = oldDeg[indice]+(Math.random()-0.5)*Math.PI/2;
     var newX = oldX[oldX.length-1]+100*sizemult*Math.cos(randDeg)/size.width;
     var newY = oldY[oldY.length-1]+100*sizemult*Math.sin(randDeg)/size.height;
     if ( newX>95 ){
@@ -77,7 +77,7 @@ function addText(){
     div.style.position = "fixed";
     div.style.top = oldY[i] + "%";
     div.style.left = oldX[i] + "%";
-    div.style.transform = "translate(-50%, -50%) rotate(" + oldDeg[i]/Math.PI/2*360 + "deg)";
+    div.style.transform = "translate(-50%, -50%) rotate(" + oldDeg[i+1]/Math.PI/2*360 + "deg)";
     div.style.zIndex = "1";
     document.body.appendChild(div);
   }
