@@ -13,12 +13,11 @@ if ( window.location.hostname == "www.google.com" && !isImg){
 }else{
   var input = null;
 }
-var indice = 0;
 var isDel = false;
 var oldX = [],oldY = [], oldDeg = [];
 oldX.push(Math.random() * 90 + 5);
 oldY.push(Math.random() * 90 + 5);
-oldDeg.push(Math.random()*2*Math.PI);
+oldDeg.push(Math.random()*Math.PI/4);
 var size = {
   width: window.innerWidth || document.body.clientWidth,
   height: window.innerHeight || document.body.clientHeight
@@ -44,18 +43,18 @@ function isASCII(i) {
 
 function addText(){
   while(input.value.length+1>=oldX.length){
-    var randDeg = oldDeg[indice]+(Math.random()-0.5)*Math.PI/2;
+    var randDeg = oldDeg[input.value.length]+(Math.random()-0.5)*Math.PI/4;
     var newX = oldX[oldX.length-1]+100*sizemult*Math.cos(randDeg)/size.width;
     var newY = oldY[oldY.length-1]+100*sizemult*Math.sin(randDeg)/size.height;
     if ( newX>95 ){
       newX -= 90;
     }else if(newX<5) {
-      newX = 90-newX;
+      newX +=90;
     }
     if ( newY>95 ){
       newY -= 90;
     }else if(newY<5) {
-      newY = 90-newY;
+      newY +=90;
     }
     oldX.push(newX);
     oldY.push(newY);
