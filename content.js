@@ -43,7 +43,7 @@ function isASCII(i) {
 
 function addText(){
   while(input.value.length+1>=oldX.length){
-    var randDeg = oldDeg[input.value.length]+(Math.random()-0.5)*Math.PI/4;
+    var randDeg = oldDeg[oldDeg.length-1]+(Math.random()-0.5)*Math.PI/4;
     var newX = oldX[oldX.length-1]+100*sizemult*Math.cos(randDeg)/size.width;
     var newY = oldY[oldY.length-1]+100*sizemult*Math.sin(randDeg)/size.height;
     if ( newX>95 ){
